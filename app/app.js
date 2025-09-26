@@ -30,6 +30,33 @@ addressBookApp.controller("addressBookController", [
       }
     };
 
+    $scope.updateAvailableOptions = function () {
+      console.log("TEST");
+      let availableContacts = $scope.addresses.filter((contact) => {
+        return (
+          ($scope.filters.search === "" ||
+            contact.ContactName.toLowerCase().includes(
+              $scope.filters.search.toLowerCase()
+            )) &&
+          ($scope.filters.company === "" ||
+            contact.CompanyName === $scope.filters.company) &&
+          ($scope.filters.role === "" ||
+            contact.ContactTitle === $scope.filters.role) &&
+          ($scope.filters.country === "" ||
+            contact.Country === $scope.filters.country)
+        );
+      });
+      $scope.countries = [
+        ...new Set(availableContacts.map((contact) => contact.Country)),
+      ];
+      $scope.roles = [
+        ...new Set(availableContacts.map((contact) => contact.ContactTitle)),
+      ];
+      $scope.companies = [
+        ...new Set(availableContacts.map((contact) => contact.CompanyName)),
+      ];
+    };
+
     const x2js = new X2JS();
 
     $http
