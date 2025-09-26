@@ -1,7 +1,10 @@
 <table>
   <thead>
     <tr>
-      <th>Contact Name</th>
+      <th>
+        Contact Name
+        <span ng-click="changeContactOrder()">{{contactOrderSymbol}}</span>
+      </th>
       <th>Email</th>
       <th>Phone</th>
       <th>Fax</th>
@@ -12,7 +15,7 @@
   </thead>
   <tbody>
     <tr
-      ng-repeat="address in addresses | filter: {ContactName: search} | filter: (countryFilter ? {Country: countryFilter} : {}) | filter: (roleFilter ? {ContactTitle: roleFilter} : {}) | filter: (companyFilter ? {CompanyName: companyFilter} : {})"
+      ng-repeat="address in addresses | orderBy: contactOrder | filter: {ContactName: search} | filter: (countryFilter ? {Country: countryFilter} : {}) | filter: (roleFilter ? {ContactTitle: roleFilter} : {}) | filter: (companyFilter ? {CompanyName: companyFilter} : {})"
     >
       <th>{{address.ContactName}}</th>
       <th>{{address.Email}}</th>

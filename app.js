@@ -6,6 +6,19 @@ addressBookApp.controller("addressBookController", [
   function ($scope, $http) {
     $scope.viewmode = "table";
 
+    $scope.contactOrderSymbol = "▲";
+    $scope.contactOrder = "ContactName";
+
+    $scope.changeContactOrder = function () {
+      if ($scope.contactOrderSymbol === "▲") {
+        $scope.contactOrderSymbol = "▼";
+        $scope.contactOrder = "-ContactName";
+      } else {
+        $scope.contactOrderSymbol = "▲";
+        $scope.contactOrder = "ContactName";
+      }
+    };
+
     const x2js = new X2JS();
 
     $http
