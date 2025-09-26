@@ -4,6 +4,8 @@ addressBookApp.controller("addressBookController", [
   "$scope",
   "$http",
   function ($scope, $http) {
+    $scope.viewmode = "table";
+
     const x2js = new X2JS();
 
     $http

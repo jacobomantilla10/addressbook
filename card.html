@@ -1,0 +1,16 @@
+<div class="card-container">
+  <div
+    ng-repeat="address in addresses | filter: {ContactName: search} | filter: (countryFilter ? {Country: countryFilter} : {}) | filter: (roleFilter ? {ContactTitle: roleFilter} : {}) | filter: (companyFilter ? {CompanyName: companyFilter} : {})"
+  >
+    <h1>{{address.ContactName}}</h1>
+    <h3>{{address.Email}}</h3>
+    <p>{{address.Phone}}</p>
+    <p>{{address.Fax}}</p>
+    <p>{{address.ContactTitle}}</p>
+    <p>{{address.CompanyName}}</p>
+    <p>
+      {{address.Address}}, {{address.City}}, {{address.PostalCode}},
+      {{address.Country}}.
+    </p>
+  </div>
+</div>
