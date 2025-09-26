@@ -15,6 +15,16 @@ addressBookApp.controller("addressBookController", [
       .then(
         function (response) {
           $scope.addresses = response.data.AddressBook.Contact;
+
+          $scope.countries = [
+            ...new Set($scope.addresses.map((address) => address.Country)),
+          ];
+          $scope.roles = [
+            ...new Set($scope.addresses.map((address) => address.ContactTitle)),
+          ];
+          $scope.companies = [
+            ...new Set($scope.addresses.map((address) => address.CompanyName)),
+          ];
         },
         function (error) {
           // TODO make this error handling better

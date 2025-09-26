@@ -10,6 +10,27 @@
     <title>Address Book</title>
   </head>
   <body ng-controller="addressBookController">
+    <input type="text" ng-model="search" placeholder="Search for a person" />
+    <label for="countryFilter">Country</label>
+    <select
+      id="countryFilter"
+      ng-model="countryFilter"
+      ng-options="c for c in countries"
+    >
+      <option value="">All Countries</option>
+    </select>
+    <label for="roleFilter">Role</label>
+    <select id="roleFilter" ng-model="roleFilter" ng-options="r for r in roles">
+      <option value="">All Roles</option>
+    </select>
+    <label for="companyFilter">Company</label>
+    <select
+      id="companyFilter"
+      ng-model="companyFilter"
+      ng-options="c for c in companies"
+    >
+      <option value="">All Companies</option>
+    </select>
     <table>
       <thead>
         <tr>
@@ -17,13 +38,27 @@
           <th>Email</th>
           <th>Phone</th>
           <th>Fax</th>
+          <th>Role</th>
           <th>Company Name</th>
           <th>Address</th>
-          <th>City</th>
-          <th>Country</th>
         </tr>
       </thead>
-      <tbody></tbody>
+      <tbody>
+        <tr
+          ng-repeat="address in addresses | filter: {ContactName: search} | filter: (countryFilter ? {Country: countryFilter} : {}) | filter: (roleFilter ? {ContactTitle: roleFilter} : {}) | filter: (companyFilter ? {CompanyName: companyFilter} : {})"
+        >
+          <th>{{address.ContactName}}</th>
+          <th>{{address.Email}}</th>
+          <th>{{address.Phone}}</th>
+          <th>{{address.Fax}}</th>
+          <th>{{address.ContactTitle}}</th>
+          <th>{{address.CompanyName}}</th>
+          <th>
+            {{address.Address}}, {{address.City}}, {{address.PostalCode}},
+            {{address.Country}}.
+          </th>
+        </tr>
+      </tbody>
     </table>
   </body>
 </html>
