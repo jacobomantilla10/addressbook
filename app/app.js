@@ -4,12 +4,21 @@ addressBookApp.controller("addressBookController", [
   "$scope",
   "$http",
   function ($scope, $http) {
-    $scope.viewmode = "table";
+    $scope.view = {
+      mode: "table",
+    };
 
     $scope.contactOrderSymbol = "▲";
     $scope.contactOrder = "ContactName";
 
     $scope.year = new Date().getFullYear();
+
+    $scope.filters = {
+      search: "",
+      company: "",
+      role: "",
+      country: "",
+    };
 
     $scope.changeContactOrder = function () {
       if ($scope.contactOrderSymbol === "▲") {

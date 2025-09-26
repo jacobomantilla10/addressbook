@@ -15,7 +15,7 @@
   </thead>
   <tbody>
     <tr
-      ng-repeat="address in addresses | orderBy: contactOrder | filter: {ContactName: search} | filter: (countryFilter ? {Country: countryFilter} : {}) | filter: (roleFilter ? {ContactTitle: roleFilter} : {}) | filter: (companyFilter ? {CompanyName: companyFilter} : {})"
+      ng-repeat="address in addresses | orderBy: contactOrder | filter: {ContactName: filters.search} | filter: (filters.country ? {Country: filters.country} : {}) | filter: (filters.role ? {ContactTitle: filters.role} : {}) | filter: (filters.company ? {CompanyName: filters.company} : {})"
     >
       <th>{{address.ContactName}}</th>
       <th>{{address.Email}}</th>
