@@ -1,29 +1,40 @@
-<input
-  type="text"
-  ng-model="filters.search"
-  ng-change="updateAvailableOptions()"
-  placeholder="Search for a person"
-/>
-<label for="countryFilter">Country</label>
-<select
-  id="countryFilter"
-  ng-model="filters.country"
-  ng-change="updateAvailableOptions()"
-  ng-options="c as (c || 'All Countries') for c in [''].concat(countries)"
-></select>
-<label for="roleFilter">Role</label>
-<select
-  id="roleFilter"
-  ng-model="filters.role"
-  ng-change="updateAvailableOptions()"
-  ng-options="r as (r || 'All Roles') for r in [''].concat(roles)"
-></select>
-<label for="companyFilter">Company</label>
-<select
-  id="companyFilter"
-  ng-model="filters.company"
-  ng-change="updateAvailableOptions()"
-  ng-options="c as (c || 'All Companies') for c in [''].concat(companies)"
-></select>
-<button ng-click="view.mode = 'table'">Table</button>
-<button ng-click="view.mode = 'card'">Card</button>
+<div class="search-container">
+  <div class="search-bar-container">
+    <input
+      type="text"
+      class="search-bar"
+      ng-model="filters.search"
+      ng-change="updateAvailableOptions()"
+      placeholder="Search for a person..."
+    />
+  </div>
+  <div class="options-container">
+    <div class="options">
+      <label for="countryFilter">Country</label>
+      <select
+        id="countryFilter"
+        ng-model="filters.country"
+        ng-change="updateAvailableOptions()"
+        ng-options="c as (c || 'All Countries') for c in [''].concat(countries)"
+      ></select>
+      <label for="roleFilter">Role</label>
+      <select
+        id="roleFilter"
+        ng-model="filters.role"
+        ng-change="updateAvailableOptions()"
+        ng-options="r as (r || 'All Roles') for r in [''].concat(roles)"
+      ></select>
+      <label for="companyFilter">Company</label>
+      <select
+        id="companyFilter"
+        ng-model="filters.company"
+        ng-change="updateAvailableOptions()"
+        ng-options="c as (c || 'All Companies') for c in [''].concat(companies)"
+      ></select>
+    </div>
+    <div class="search-buttons">
+      <button ng-click="view.mode = 'table'">Table View</button>
+      <button ng-click="view.mode = 'card'">Card View</button>
+    </div>
+  </div>
+</div>
