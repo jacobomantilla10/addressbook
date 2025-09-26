@@ -9,6 +9,8 @@ addressBookApp.controller("addressBookController", [
     $scope.contactOrderSymbol = "▲";
     $scope.contactOrder = "ContactName";
 
+    $scope.year = new Date().getFullYear();
+
     $scope.changeContactOrder = function () {
       if ($scope.contactOrderSymbol === "▲") {
         $scope.contactOrderSymbol = "▼";

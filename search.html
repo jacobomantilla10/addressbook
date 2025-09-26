@@ -1,0 +1,23 @@
+<input type="text" ng-model="search" placeholder="Search for a person" />
+<label for="countryFilter">Country</label>
+<select
+  id="countryFilter"
+  ng-model="countryFilter"
+  ng-options="c for c in countries"
+>
+  <option value="">All Countries</option>
+</select>
+<label for="roleFilter">Role</label>
+<select id="roleFilter" ng-model="roleFilter" ng-options="r for r in roles">
+  <option value="">All Roles</option>
+</select>
+<label for="companyFilter">Company</label>
+<select
+  id="companyFilter"
+  ng-model="companyFilter"
+  ng-options="c for c in companies"
+>
+  <option value="">All Companies</option>
+</select>
+<button ng-click="viewmode = 'table'">Table</button>
+<button ng-click="viewmode = 'card'">Card</button>
