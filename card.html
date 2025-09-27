@@ -1,16 +1,33 @@
 <div class="card-container">
   <div
+    class="card"
     ng-repeat="address in addresses | filter: {ContactName: filters.search} | filter: (filters.country ? {Country: filters.country} : {}) | filter: (filters.role ? {ContactTitle: filters.role} : {}) | filter: (filters.company ? {CompanyName: filters.company} : {})"
   >
-    <h1>{{address.ContactName}}</h1>
-    <h3>{{address.Email}}</h3>
-    <p>{{address.Phone}}</p>
-    <p>{{address.Fax}}</p>
-    <p>{{address.ContactTitle}}</p>
-    <p>{{address.CompanyName}}</p>
-    <p>
-      {{address.Address}}, {{address.City}}, {{address.PostalCode}},
-      {{address.Country}}.
-    </p>
+    <div class="top-section">
+      <div><img class="photo" src="content/icons/user.png" /></div>
+      <div class="personal-info">
+        <h1>{{address.ContactName}}</h1>
+        <p>{{address.ContactTitle}}</p>
+        <p>{{address.CompanyName}}</p>
+        <p>
+          {{address.Address}}, {{address.City}}, {{address.PostalCode}},
+          {{address.Country}}.
+        </p>
+      </div>
+    </div>
+    <div class="bottom-section">
+      <div class="contact-field">
+        <img class="contact-icon" src="content/icons/email.png" />
+        <h3>{{address.Email}}</h3>
+      </div>
+      <div class="contact-field">
+        <img class="contact-icon" src="content/icons/phone-call.png" />
+        <p>{{address.Phone}}</p>
+      </div>
+      <div class="contact-field" ng-show="address.Fax">
+        <img class="contact-icon" src="content/icons/fax-machine.png" />
+        <p>{{address.Fax}}</p>
+      </div>
+    </div>
   </div>
 </div>

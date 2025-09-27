@@ -10,29 +10,38 @@
   </div>
   <div class="options-container">
     <div class="options">
-      <label for="countryFilter">Country</label>
-      <select
-        id="countryFilter"
-        ng-model="filters.country"
-        ng-change="updateAvailableOptions()"
-        ng-options="c as (c || 'All Countries') for c in [''].concat(countries)"
-      ></select>
-      <label for="roleFilter">Role</label>
-      <select
-        id="roleFilter"
-        ng-model="filters.role"
-        ng-change="updateAvailableOptions()"
-        ng-options="r as (r || 'All Roles') for r in [''].concat(roles)"
-      ></select>
-      <label for="companyFilter">Company</label>
-      <select
-        id="companyFilter"
-        ng-model="filters.company"
-        ng-change="updateAvailableOptions()"
-        ng-options="c as (c || 'All Companies') for c in [''].concat(companies)"
-      ></select>
+      <div>
+        <label for="countryFilter">Country</label>
+        <select
+          id="countryFilter"
+          ng-model="filters.country"
+          ng-change="updateAvailableOptions()"
+          ng-options="c as (c || 'All Countries') for c in [''].concat(countries)"
+        ></select>
+      </div>
+      <div>
+        <label for="roleFilter">Role</label>
+        <select
+          id="roleFilter"
+          ng-model="filters.role"
+          ng-change="updateAvailableOptions()"
+          ng-options="r as (r || 'All Roles') for r in [''].concat(roles)"
+        ></select>
+      </div>
+      <div>
+        <label for="companyFilter">Company</label>
+        <select
+          id="companyFilter"
+          ng-model="filters.company"
+          ng-change="updateAvailableOptions()"
+          ng-options="c as (c || 'All Companies') for c in [''].concat(companies)"
+        ></select>
+      </div>
     </div>
     <div class="search-buttons">
+      <button ng-click="resetFilters()" ng-show="isFiltered.filtered">
+        Reset Filters
+      </button>
       <button ng-click="view.mode = 'table'">Table View</button>
       <button ng-click="view.mode = 'card'">Card View</button>
     </div>

@@ -8,6 +8,10 @@ addressBookApp.controller("addressBookController", [
       mode: "table",
     };
 
+    $scope.isFiltered = {
+      filtered: false,
+    };
+
     $scope.contactOrderSymbol = "▲";
     $scope.contactOrder = "ContactName";
 
@@ -30,8 +34,42 @@ addressBookApp.controller("addressBookController", [
       }
     };
 
+    $scope.resetFilters = function () {
+      $scope.filters.search = "";
+      $scope.filters.company = "";
+      $scope.filters.role = "";
+      $scope.filters.country = "";
+
+      $scope.updateAvailableOptions();
+    };
+
     $scope.updateAvailableOptions = function () {
-      console.log("TEST");
+      if (
+        ($scope.filters.company !== "" &&
+          $scope.filters.role === "" &&
+          $scope.filters.country === "") ||
+        ($scope.filters.role !== "" &&
+          $scope.filters.company === "" &&
+          $scope.filters.country === "") ||
+        ($scope.filters.country !== "" &&
+          $scope.filters.company === "" &&
+          $scope.filters.role === "")
+      ) {
+        $scope.isFiltered.filtered = true;
+        return;
+      }
+
+      if (
+        $scope.filters.search !== "" ||
+        $scope.filters.company !== "" ||
+        $scope.filters.role !== "" ||
+        $scope.filters.country !== ""
+      ) {
+        $scope.isFiltered.filtered = true;
+      } else {
+        $scope.isFiltered.filtered = false;
+      }
+
       let availableContacts = $scope.addresses.filter((contact) => {
         return (
           ($scope.filters.search === "" ||
