@@ -19,4 +19,4 @@ Clone repository and start server to run program. I use VS Code and used the Liv
 
 Here's a demo of what it should look like once you run it:
 
-![Demo Gif](https://github.com/jacobomantilla10/addressbook/blob/demo.gif)
+![Demo Gif](https://github.com/jacobomantilla10/addressbook/demo.gif)
