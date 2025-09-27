@@ -45,21 +45,6 @@ addressBookApp.controller("addressBookController", [
 
     $scope.updateAvailableOptions = function () {
       if (
-        ($scope.filters.company !== "" &&
-          $scope.filters.role === "" &&
-          $scope.filters.country === "") ||
-        ($scope.filters.role !== "" &&
-          $scope.filters.company === "" &&
-          $scope.filters.country === "") ||
-        ($scope.filters.country !== "" &&
-          $scope.filters.company === "" &&
-          $scope.filters.role === "")
-      ) {
-        $scope.isFiltered.filtered = true;
-        return;
-      }
-
-      if (
         $scope.filters.search !== "" ||
         $scope.filters.company !== "" ||
         $scope.filters.role !== "" ||
