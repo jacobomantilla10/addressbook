@@ -4,6 +4,7 @@ addressBookApp.controller("addressBookController", [
   "$scope",
   "$http",
   function ($scope, $http) {
+    // controls view mode for conditionally rendering table or cards
     $scope.view = {
       mode: "table",
     };
@@ -24,6 +25,7 @@ addressBookApp.controller("addressBookController", [
       country: "",
     };
 
+    // Reverse sort order of elements in table
     $scope.changeContactOrder = function () {
       if ($scope.contactOrderSymbol === "▲") {
         $scope.contactOrderSymbol = "▼";
@@ -34,6 +36,7 @@ addressBookApp.controller("addressBookController", [
       }
     };
 
+    // Reset search filters and update available options
     $scope.resetFilters = function () {
       $scope.filters.search = "";
       $scope.filters.company = "";
@@ -43,6 +46,7 @@ addressBookApp.controller("addressBookController", [
       $scope.updateAvailableOptions();
     };
 
+    // Update filter options depending on what's available
     $scope.updateAvailableOptions = function () {
       if (
         $scope.filters.search !== "" ||
@@ -82,6 +86,7 @@ addressBookApp.controller("addressBookController", [
 
     const x2js = new X2JS();
 
+    // Fetch XML and set data
     $http
       .get("data/ab.xml", {
         transformResponse: function (xmlString) {
@@ -103,8 +108,7 @@ addressBookApp.controller("addressBookController", [
           ];
         },
         function (error) {
-          // TODO make this error handling better
-          console.log("OOPS");
+          console.log("An error occurred: ", error);
         }
       );
   },
