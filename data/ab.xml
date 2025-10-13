@@ -6,7 +6,7 @@
 		<ContactTitle>Sales Representative</ContactTitle>
 		<Address>Obere Str. 57</Address>
 		<City>Berlin</City>
-		<Email>dummy@gmail.com</Email>
+		<Email>abc@gmail.com</Email>
 		<PostalCode>12209</PostalCode>
 		<Country>Germany</Country>
 		<Phone>030-0074321</Phone>
@@ -19,7 +19,7 @@
 		<ContactTitle>Owner</ContactTitle>
 		<Address>Avda. de la Constitución 2222</Address>
 		<City>México D.F.</City>
-		<Email>dummy@gmail.com</Email>
+		<Email>def@gmail.com</Email>
 		<PostalCode>05021</PostalCode>
 		<Country>Mexico</Country>
 		<Phone>(5) 555-4729</Phone>
@@ -32,7 +32,7 @@
 		<ContactTitle>Owner</ContactTitle>
 		<Address>Mataderos  2312</Address>
 		<City>México D.F.</City>
-		<Email>dummy@gmail.com</Email>
+		<Email>ghi@gmail.com</Email>
 		<PostalCode>05023</PostalCode>
 		<Country>Mexico</Country>
 		<Phone>(5) 555-3932</Phone>

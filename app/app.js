@@ -13,9 +13,6 @@ addressBookApp.controller("addressBookController", [
       filtered: false,
     };
 
-    $scope.contactOrderSymbol = "▲";
-    $scope.contactOrder = "ContactName";
-
     $scope.year = new Date().getFullYear();
 
     $scope.filters = {
@@ -23,16 +20,63 @@ addressBookApp.controller("addressBookController", [
       company: "",
       role: "",
       country: "",
+      sort: "ContactName"
     };
 
+    $scope.order = {
+      ContactName: {
+        sort: "ContactName",
+        symbol: "▲"
+      },
+      Email: {
+        sort: "Email",
+        symbol: "▲"
+      },
+      Phone: {
+        sort: "Phone",
+        symbol: "▲"
+      },
+      Fax: {
+        sort: "Fax",
+        symbol: "▲"
+      },
+      ContactTitle: {
+        sort: "ContactTitle",
+        symbol: "▲"
+      },
+      CompanyName: {
+        sort: "CompanyName",
+        symbol: "▲"
+      },
+      Email: {
+        sort: "Email",
+        symbol: "▲"
+      },
+      Address: {
+        sort: "Address",
+        symbol: "▲"
+      }
+    }
+
     // Reverse sort order of elements in table
-    $scope.changeContactOrder = function () {
-      if ($scope.contactOrderSymbol === "▲") {
-        $scope.contactOrderSymbol = "▼";
-        $scope.contactOrder = "-ContactName";
+    $scope.changeOrder = function (sortField) {
+      // save value of original sort order to reset it to sort up later
+      let currentSortItem = $scope.filters.sort.replace("-", "");
+      // Adjust sorting for selected element
+      let newSortItem = $scope.order[sortField];
+      if (newSortItem.symbol === "▲") {
+        newSortItem.symbol = "▼";
+        newSortItem.sort = "-" + newSortItem.sort;
       } else {
-        $scope.contactOrderSymbol = "▲";
-        $scope.contactOrder = "ContactName";
+        newSortItem.symbol = "▲";
+        newSortItem.sort = newSortItem.sort.replace("-", "");
+      }
+      // Set sort to be the value of the new sort of the selected element
+      $scope.filters.sort = newSortItem.sort;
+      // Don't reset value if element is the same
+      if (currentSortItem !== sortField) {
+        $scope.order[currentSortItem].symbol = "▲";
+        $scope.order[currentSortItem].sort = currentSortItem;
       }
     };
 

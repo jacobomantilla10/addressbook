@@ -3,19 +3,31 @@
     <tr>
       <th>
         Contact Name
-        <span ng-click="changeContactOrder()">{{contactOrderSymbol}}</span>
+        <span ng-click="changeOrder('ContactName')">{{order.ContactName.symbol}}</span>
       </th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th>Fax</th>
-      <th>Role</th>
-      <th>Company Name</th>
-      <th>Address</th>
+      <th>Email
+        <span ng-click="changeOrder('Email')">{{order.Email.symbol}}</span>
+      </th>
+      <th>Phone
+        <span ng-click="changeOrder('Phone')">{{order.Phone.symbol}}</span>
+      </th>
+      <th>Fax
+        <span ng-click="changeOrder('Fax')">{{order.Fax.symbol}}</span>
+      </th>
+      <th>Role
+        <span ng-click="changeOrder('ContactTitle')">{{order.ContactTitle.symbol}}</span>
+      </th>
+      <th>Company Name
+        <span ng-click="changeOrder('CompanyName')">{{order.CompanyName.symbol}}</span>
+      </th>
+      <th>Address
+        <span ng-click="changeOrder('Address')">{{order.Address.symbol}}</span>
+      </th>
     </tr>
   </thead>
   <tbody>
     <tr
-      ng-repeat="address in addresses | orderBy: contactOrder | filter: {ContactName: filters.search} | filter: (filters.country ? {Country: filters.country} : {}) | filter: (filters.role ? {ContactTitle: filters.role} : {}) | filter: (filters.company ? {CompanyName: filters.company} : {})"
+      ng-repeat="address in addresses | orderBy: filters.sort | filter: {ContactName: filters.search} | filter: (filters.country ? {Country: filters.country} : {}) | filter: (filters.role ? {ContactTitle: filters.role} : {}) | filter: (filters.company ? {CompanyName: filters.company} : {})"
     >
       <th>{{address.ContactName}}</th>
       <th>{{address.Email}}</th>
