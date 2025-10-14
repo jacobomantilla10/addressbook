@@ -1,0 +1,24 @@
+{
+  "name": "address-book",
+  "version": "1.0.0",
+  "description": "Learning project built in AngularJS that takes XML address book and displays it as a table view and card view.",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacobomantilla10/addressbook.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/jacobomantilla10/addressbook/issues"
+  },
+  "homepage": "https://github.com/jacobomantilla10/addressbook#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
