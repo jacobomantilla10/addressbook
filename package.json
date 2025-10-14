@@ -4,7 +4,9 @@
   "description": "Learning project built in AngularJS that takes XML address book and displays it as a table view and card view.",
   "main": "server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server/server.js",
+    "start": "node server/server.js"
   },
   "repository": {
     "type": "git",
