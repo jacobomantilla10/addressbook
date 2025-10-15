@@ -1,49 +1,134 @@
-<div class="search-container">
-  <div class="search-bar-container">
+<!-- bg-[#1e293b]/80 backdrop-blur-sm p-4 rounded-xl shadow-lg  -->
+<div class="flex flex-col gap-4 w-full">
+  <div class="relative w-full mx-auto">
     <input
       type="text"
-      class="search-bar"
+      class="w-full bg-slate-800/50 backdrop-blur text-gray-100 placeholder-gray-400 pl-10 pr-4 py-2 border border-slate-700/50 focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 focus:outline-none rounded-full min-w-[15rem]"
       ng-model="filters.search"
       ng-change="updateAvailableOptions()"
       placeholder="Search for a person..."
     />
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="absolute left-3 top-2.5 w-5 h-5 text-gray-400"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="m21 21-4.35-4.35m0 0A7.5 7.5 0 1 0 4.5 4.5a7.5 7.5 0 0 0 12.15 12.15Z"
+      />
+    </svg>
   </div>
-  <div class="options-container">
-    <div class="options">
-      <div>
-        <label for="countryFilter">Country</label>
+  <div class="flex justify-between items-center">
+    <div class="flex flex-wrap gap-3">
+      <div class="relative">
         <select
           id="countryFilter"
+          class="w-40 min-w-[10rem] appearance-none bg-slate-800 text-slate-300 border border-slate-700/50 rounded-lg px-3 py-2 pr-8 text-sm font-medium focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 transition-all duration-200 cursor-pointer flex-shrink-0"
           ng-model="filters.country"
           ng-change="updateAvailableOptions()"
-          ng-options="c as (c || 'All Countries') for c in [''].concat(countries)"
+          ng-options="c as (c || 'Countries') for c in [''].concat(countries)"
         ></select>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 9l6 6 6-6"
+          />
+        </svg>
       </div>
-      <div>
-        <label for="roleFilter">Role</label>
+      <div class="relative flex-shrink-0">
         <select
+          class="w-40 min-w-[10rem] appearance-none bg-slate-800 text-slate-300 border border-slate-700/50 rounded-lg px-3 py-2 pr-8 text-sm font-medium focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 transition-all duration-200 cursor-pointer flex-shrink-0"
           id="roleFilter"
           ng-model="filters.role"
           ng-change="updateAvailableOptions()"
-          ng-options="r as (r || 'All Roles') for r in [''].concat(roles)"
+          ng-options="r as (r || 'Roles') for r in [''].concat(roles)"
         ></select>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 9l6 6 6-6"
+          />
+        </svg>
       </div>
-      <div>
-        <label for="companyFilter">Company</label>
+      <div class="relative flex-shrink-0">
         <select
+          class="w-40 min-w-[10rem] appearance-none bg-slate-800 text-slate-300 border border-slate-700/50 rounded-lg px-3 py-2 pr-8 text-sm font-medium focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 transition-all duration-200 cursor-pointer flex-shrink-0"
           id="companyFilter"
           ng-model="filters.company"
           ng-change="updateAvailableOptions()"
-          ng-options="c as (c || 'All Companies') for c in [''].concat(companies)"
+          ng-options="c as (c || 'Companies') for c in [''].concat(companies)"
         ></select>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 9l6 6 6-6"
+          />
+        </svg>
       </div>
     </div>
-    <div class="search-buttons">
-      <button ng-click="resetFilters()" ng-show="isFiltered.filtered">
-        Reset Filters
+    <div class="flex gap-3">
+      <button
+        class="p-2 rounded-lg bg-slate-800/50 text-slate-300 border border-slate-700/50 hover:bg-slate-700/50"
+        ng-click="resetFilters()"
+        ng-show="isFiltered.filtered"
+      >
+        Reset
       </button>
-      <button ng-click="view.mode = 'table'">Table View</button>
-      <button ng-click="view.mode = 'card'">Card View</button>
+      <button
+        class="p-2 rounded-lg bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 border border-blue-500/30 shadow-md"
+        ng-show="view.mode == 'table'"
+      >
+        Table
+      </button>
+      <button
+        class="p-2 rounded-lg bg-slate-800/50 text-slate-300 border border-slate-700/50 hover:bg-slate-700/50"
+        ng-click="view.mode = 'table'"
+        ng-show="view.mode == 'card'"
+      >
+        Table
+      </button>
+      <button
+        class="p-2 rounded-lg bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 border border-blue-500/30"
+        ng-show="view.mode == 'card'"
+      >
+        Cards
+      </button>
+      <button
+        class="p-2 rounded-lg bg-slate-800/50 text-slate-300 border border-slate-700/50 hover:bg-slate-700/50"
+        ng-click="view.mode = 'card'"
+        ng-show="view.mode == 'table'"
+      >
+        Cards
+      </button>
     </div>
   </div>
 </div>

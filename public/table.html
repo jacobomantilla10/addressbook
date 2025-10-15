@@ -1,44 +1,349 @@
-<table>
-  <thead>
-    <tr>
-      <th>
-        Contact Name
-        <span ng-click="changeOrder('ContactName')">{{order.ContactName.symbol}}</span>
-      </th>
-      <th>Email
-        <span ng-click="changeOrder('Email')">{{order.Email.symbol}}</span>
-      </th>
-      <th>Phone
-        <span ng-click="changeOrder('Phone')">{{order.Phone.symbol}}</span>
-      </th>
-      <th>Fax
-        <span ng-click="changeOrder('Fax')">{{order.Fax.symbol}}</span>
-      </th>
-      <th>Role
-        <span ng-click="changeOrder('ContactTitle')">{{order.ContactTitle.symbol}}</span>
-      </th>
-      <th>Company Name
-        <span ng-click="changeOrder('CompanyName')">{{order.CompanyName.symbol}}</span>
-      </th>
-      <th>Address
-        <span ng-click="changeOrder('Address')">{{order.Address.symbol}}</span>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      ng-repeat="address in addresses | orderBy: filters.sort | filter: {ContactName: filters.search} | filter: (filters.country ? {Country: filters.country} : {}) | filter: (filters.role ? {ContactTitle: filters.role} : {}) | filter: (filters.company ? {CompanyName: filters.company} : {})"
-    >
-      <th>{{address.ContactName}}</th>
-      <th>{{address.Email}}</th>
-      <th>{{address.Phone}}</th>
-      <th>{{address.Fax}}</th>
-      <th>{{address.ContactTitle}}</th>
-      <th>{{address.CompanyName}}</th>
-      <th>
-        {{address.Address}}, {{address.City}}, {{address.PostalCode}},
-        {{address.Country}}.
-      </th>
-    </tr>
-  </tbody>
-</table>
+<div class="overflow-hidden rounded-xl border border-slate-700/50">
+  <table class="bg-slate-800/30 w-full">
+    <thead class="bg-slate-800/50 border-b border-slate-700/50">
+      <tr class="font-semibold text-slate-400 text-xl">
+        <th
+          class="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider cursor-pointer hover:text-blue-400 transition-colors"
+        >
+          <span
+            class="flex gap-3 items-center"
+            ng-click="changeOrder('ContactName')"
+          >
+            Contact Name
+            <svg
+              ng-if="order.ContactName.sort == 'ContactName'"
+              class="w-5 h-5 flex-shrink-0"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-up w-4 h-4-icon lucide-arrow-up w-4 h-4"
+            >
+              <path d="m5 12 7-7 7 7" />
+              <path d="M12 19V5" />
+            </svg>
+            <svg
+              ng-if="order.ContactName.sort == '-ContactName'"
+              class="w-5 h-5 flex-shrink-0"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-down-icon lucide-arrow-down"
+            >
+              <path d="M12 5v14" />
+              <path d="m19 12-7 7-7-7" />
+            </svg>
+          </span>
+        </th>
+        <th
+          class="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider cursor-pointer hover:text-blue-400 transition-colors"
+        >
+          <span class="flex gap-3 items-center" ng-click="changeOrder('Email')">
+            Email
+            <svg
+              ng-if="order.Email.sort == 'Email'"
+              class="w-5 h-5 flex-shrink-0"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-up w-4 h-4-icon lucide-arrow-up w-4 h-4"
+            >
+              <path d="m5 12 7-7 7 7" />
+              <path d="M12 19V5" />
+            </svg>
+            <svg
+              ng-if="order.Email.sort == '-Email'"
+              class="w-5 h-5 flex-shrink-0"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-down-icon lucide-arrow-down"
+            >
+              <path d="M12 5v14" />
+              <path d="m19 12-7 7-7-7" />
+            </svg>
+          </span>
+        </th>
+        <th
+          class="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider cursor-pointer hover:text-blue-400 transition-colors"
+        >
+          <span class="flex gap-3 items-center" ng-click="changeOrder('Phone')">
+            Phone
+            <svg
+              ng-if="order.Phone.sort == 'Phone'"
+              class="w-5 h-5 flex-shrink-0"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-up w-4 h-4-icon lucide-arrow-up w-4 h-4"
+            >
+              <path d="m5 12 7-7 7 7" />
+              <path d="M12 19V5" />
+            </svg>
+            <svg
+              ng-if="order.Phone.sort == '-Phone'"
+              class="w-5 h-5 flex-shrink-0"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-down-icon lucide-arrow-down"
+            >
+              <path d="M12 5v14" />
+              <path d="m19 12-7 7-7-7" />
+            </svg>
+          </span>
+        </th>
+        <th
+          class="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider cursor-pointer hover:text-blue-400 transition-colors"
+        >
+          <span class="flex gap-3 items-center" ng-click="changeOrder('Fax')">
+            Fax
+            <svg
+              ng-if="order.Fax.sort == 'Fax'"
+              class="w-5 h-5 flex-shrink-0"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-up w-4 h-4-icon lucide-arrow-up w-4 h-4"
+            >
+              <path d="m5 12 7-7 7 7" />
+              <path d="M12 19V5" />
+            </svg>
+            <svg
+              ng-if="order.Fax.sort == '-Fax'"
+              class="w-5 h-5 flex-shrink-0"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-down-icon lucide-arrow-down"
+            >
+              <path d="M12 5v14" />
+              <path d="m19 12-7 7-7-7" />
+            </svg>
+          </span>
+        </th>
+        <th
+          class="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider cursor-pointer hover:text-blue-400 transition-colors"
+        >
+          <span
+            class="flex gap-3 items-center"
+            ng-click="changeOrder('ContactTitle')"
+          >
+            Role
+            <svg
+              ng-if="order.ContactTitle.sort == 'ContactTitle'"
+              class="w-5 h-5 flex-shrink-0"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-up w-4 h-4-icon lucide-arrow-up w-4 h-4"
+            >
+              <path d="m5 12 7-7 7 7" />
+              <path d="M12 19V5" />
+            </svg>
+            <svg
+              ng-if="order.ContactTitle.sort == '-ContactTitle'"
+              class="w-5 h-5 flex-shrink-0"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-down-icon lucide-arrow-down"
+            >
+              <path d="M12 5v14" />
+              <path d="m19 12-7 7-7-7" />
+            </svg>
+          </span>
+        </th>
+        <th
+          class="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider cursor-pointer hover:text-blue-400 transition-colors"
+        >
+          <span
+            class="flex gap-3 items-center"
+            ng-click="changeOrder('CompanyName')"
+          >
+            Company Name
+            <svg
+              ng-if="order.CompanyName.sort == 'CompanyName'"
+              class="w-5 h-5 flex-shrink-0"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-up w-4 h-4-icon lucide-arrow-up w-4 h-4"
+            >
+              <path d="m5 12 7-7 7 7" />
+              <path d="M12 19V5" />
+            </svg>
+            <svg
+              ng-if="order.CompanyName.sort == '-CompanyName'"
+              class="w-5 h-5 flex-shrink-0"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-down-icon lucide-arrow-down"
+            >
+              <path d="M12 5v14" />
+              <path d="m19 12-7 7-7-7" />
+            </svg>
+          </span>
+        </th>
+        <th
+          class="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider cursor-pointer hover:text-blue-400 transition-colors"
+        >
+          <span
+            class="flex gap-3 items-center"
+            ng-click="changeOrder('Address')"
+          >
+            Address
+            <svg
+              ng-if="order.Address.sort == 'Address'"
+              class="w-5 h-5 flex-shrink-0"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-up w-4 h-4-icon lucide-arrow-up w-4 h-4"
+            >
+              <path d="m5 12 7-7 7 7" />
+              <path d="M12 19V5" />
+            </svg>
+            <svg
+              ng-if="order.Address.sort == '-Address'"
+              class="w-5 h-5 flex-shrink-0"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-down-icon lucide-arrow-down"
+            >
+              <path d="M12 5v14" />
+              <path d="m19 12-7 7-7-7" />
+            </svg>
+          </span>
+        </th>
+      </tr>
+    </thead>
+    <tbody class="">
+      <tr
+        ng-repeat="address in addresses | orderBy: filters.sort | filter: {ContactName: filters.search} | filter: (filters.country ? {Country: filters.country} : {}) | filter: (filters.role ? {ContactTitle: filters.role} : {}) | filter: (filters.company ? {CompanyName: filters.company} : {})"
+        class="group hover:bg-slate-700/20 transition-colors duration-200 border-b border-slate-700/30 last:border-b-0"
+      >
+        <th class="px-6 py-4">
+          <div
+            class="font-medium text-white group-hover:text-blue-400 transition-colors"
+          >
+            {{address.ContactName}}
+          </div>
+        </th>
+        <th class="px-6 py-4">
+          <a
+            class="text-blue-400 font-normal hover:text-blue-300 transition-colors"
+            >{{address.Email}}</a
+          >
+        </th>
+        <th class="px-6 py-4 text-slate-300 text-sm font-normal">
+          {{address.Phone}}
+        </th>
+        <th class="px-6 py-4 text-slate-300 text-sm font-normal">
+          <p ng-show="!address.Fax">-</p>
+          <p ng-show="address.Fax">{{address.Fax}}</p>
+        </th>
+        <th class="px-6 py-4">
+          <span
+            class="inline-flex px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-medium text-blue-400 font-normal"
+            >{{address.ContactTitle}}</span
+          >
+        </th>
+        <th class="px-6 py-4 text-slate-300 text-sm font-normal">
+          {{address.CompanyName}}
+        </th>
+        <th class="px-6 py-4 text-slate-400 text-sm max-w-xs font-normal">
+          <div>
+            {{address.Address}}, {{address.City}}, {{address.PostalCode}},
+            {{address.Country}}.
+          </div>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+</div>
