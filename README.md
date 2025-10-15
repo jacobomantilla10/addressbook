@@ -13,7 +13,7 @@ Learning project built in AngularJS that takes XML address book and displays it 
 
 ## How to run:
 
-Clone repository and start server to run program. I use VS Code and used the Live Server extension.
+Clone repository, npm install packages (`npm i`), and run `npm run start`.
 
 ## Demo
 
